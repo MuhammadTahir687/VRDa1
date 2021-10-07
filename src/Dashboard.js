@@ -16,7 +16,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import * as Progress from "react-native-progress";
 import { getBackgroundColor } from "react-native/Libraries/LogBox/UI/LogBoxStyle";
 import Cal from "./Calendar";
-import { Calendar } from "react-native-calendars";
+import { Calendar,Timeline } from "react-native-calendars";
 import Agend from "./Agenda";
 import axios from "axios";
 import { GETAPI } from "./API/APIResponse";
@@ -95,7 +95,7 @@ export default function Dashboard() {
         <ProgressBar  text1={"Achieved Left BV"} text2={"Remaining Points"} text3={"Required Left Points"} progress={parseFloat(nlabv).toFixed(0)/100} value4={parseFloat(nlabv).toFixed(0)+"%"} value1={" "+parseFloat(nlabv).toFixed(1)} value2={" "+parseFloat(nlrempoint).toFixed(1)} value3={" "+parseFloat(nlreqpoint).toFixed(1)} />
         <ProgressBar  text1={"Achieved Left BV"} text2={"Remaining Points"} text3={"Required Left Points"} progress={parseFloat(nrabv).toFixed(0)/100} value4={parseFloat(nrabv).toFixed(0)+"%"} value1={" "+parseFloat(nrabv).toFixed(1)} value2={" "+parseFloat(nrrempoint).toFixed(1)} value3={" "+parseFloat(nrreqpoint).toFixed(1)} />
         <H text={"VRDa1 Events"}/>
-        <Cal />
+        <Cal/>
       </ScrollView>
       <ActivityIndicator animating={loading} size="large" color="black" style={styles.activityind} />
     </SafeAreaView>
