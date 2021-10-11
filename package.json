@@ -39,6 +39,7 @@
     "react-native-select-dropdown": "^1.1.0",
     "react-native-simple-toast": "^1.1.3",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-timeline-listview": "^0.2.3",
     "react-native-vector-icons": "^8.1.0",
     "rn-country-picker": "^0.0.12"
   },

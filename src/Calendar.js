@@ -1,54 +1,29 @@
 import React from 'react';
 import {View} from "react-native";
 import { Calendar, CalendarList, Agenda, CalendarProvider, Timeline, ExpandableCalendar } from "react-native-calendars";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function Cal(){
+  const items={
+      '2012-05-22': [{name: 'item 1 - any js object'}],
+      '2012-05-23': [{name: 'item 2 - any js object', height: 80}],
+      '2012-05-24': [],
+      '2012-05-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
+  }
   return(
     <View>
-    <Calendar
-      // enableSwipeMonths={true}
-      // style={{
-      //   marginHorizontal:10,
-      //   marginVertical:10,
-      //   // borderBottomWidth:6,
-      //   backgroundColor:"black",
-      //   borderRadius:5
-      // }}
-      // theme={{
-      //   // backgroundColor: '#ffffff',
-      //   calendarBackground: '#ffffff',
-      //   textSectionTitleColor: '#b6c1cd',
-      //   textSectionTitleDisabledColor: '#d9e1e8',
-      //   selectedDayBackgroundColor: '#00adf5',
-      //   selectedDayTextColor: '#ffffff',
-      //   todayTextColor: 'white',
-      //   dayTextColor: 'black',
-      //   textDisabledColor: '#d9e1e8',
-      //   dotColor: '#00adf5',
-      //   selectedDotColor: '#ffffff',
-      //   arrowColor: 'white',
-      //   disabledArrowColor: 'white',
-      //   monthTextColor: 'white',
-      //   indicatorColor: 'black',
-      //   textDayFontWeight: '300',
-      //   textMonthFontWeight: 'bold',
-      //   textDayHeaderFontWeight: '300',
-      //   textDayFontSize: 16,
-      //   textMonthFontSize: 16,
-      //   textDayHeaderFontSize: 16,
-      //   todayBackgroundColor:"black",
-      //   agendaDayTextColor: 'yellow',
-      //   agendaDayNumColor: 'green',
-      //   agendaTodayColor: 'red',
-      //   agendaKnobColor: 'blue'
-      //
-      // }}
-    >
-    </Calendar>
-      <ExpandableCalendar/>
-    <Timeline
-      format24h={true}
-   />
+      <View style={{borderWidth:5,borderColor:"black",marginHorizontal:5,borderRadius:10,marginVertical:10}}>
+    <CalendarProvider date={Date()}>
+      <ExpandableCalendar />
+    </CalendarProvider>
+      </View>
+   {/* <Timeline*/}
+   {/*   format24h={true}*/}
+   {/*   renderItem={(item) => {*/}
+   {/*     return (<View style={{height: calculateHeightAccordingToTimespan(item)}} >*/}
+   {/*       <Text>{item.name}</Text>*/}
+   {/*     </View>);}}*/}
+   {/*/>*/}
     </View>
   )
 }
