@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, TouchableOpacity, TextInput, FlatList, KeyboardAvoidingView,ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  TextInput,
+  FlatList,
+  KeyboardAvoidingView,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import styles from "../StyleSheet/Style";
 import LinearGradient from "react-native-linear-gradient";
 import { Picker } from "@react-native-picker/picker";
@@ -37,11 +47,14 @@ export default function Wallet() {
   const [details,setDetails]=useState('');
   const [modalmsg,setmodalmsg]=useState('');
   const [detailvalidation,setDetailvalidation]=useState('');
+  const [loading, setLoading] = useState(true);
+
   const Button=[{id:1,title:"Wallet"},{id:2,title:"Proceed Order"}]
   useEffect(async () => {await response()}, []);
   const response = async () => {
     try {
       const response= await GETAPI("/api/transfer-funds")
+      setLoading(false);
       setAvailable(response.data.available.available)
       setEarning(response.data.available.earning.toFixed(2))
       setRecieved(response.data.available.receieved)
@@ -85,7 +98,6 @@ export default function Wallet() {
     if(selectedValue1==""){setSelectedValue1validation("Select the Amount")}
     else{setSelectedValue1validation('')}
   }
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
@@ -111,7 +123,7 @@ export default function Wallet() {
               style={{ height: 50, width: "100%" }}
               onValueChange={(itemValue, itemIndex) => {setSelectedValue(itemValue),setSelectedValuevalidation('')}}>
               <Picker.Item label="Choose One" value="" />
-              {users.sort((a, b) => a.name.localeCompare(b.name)).map((item,index)=>(<Picker.Item key={index} label={item.name} value={item.id} />))}
+              {users.map((item,index)=>(<Picker.Item key={index} label={item.name} value={item.id} />))}
             </Picker>
           </View>
           <Text style={styles.walleterror}>{selectedValuevalidation}</Text>
@@ -141,6 +153,7 @@ export default function Wallet() {
         </View>
       }
       </ScrollView>
+      <ActivityIndicator animating={loading} size="large" color="black" style={styles.activityind} />
     </SafeAreaView>
   );
 }

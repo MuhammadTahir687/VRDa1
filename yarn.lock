@@ -6253,15 +6253,16 @@
   "resolved" "https://registry.npmjs.org/react-native-raw-bottom-sheet/-/react-native-raw-bottom-sheet-2.2.0.tgz"
   "version" "2.2.0"
 
-"react-native-reanimated@^2.3.0-alpha.2", "react-native-reanimated@>= 1.0.0":
-  "integrity" "sha512-SpzW1rPMjpy7dMEKo30873pmgj0cgczBgUHvrOKKCCPJbaQXR6w6pOGrTW5M6BQtM8zpIPPwSJN+p3G9W49aiA=="
-  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.3.0-alpha.2.tgz"
-  "version" "2.3.0-alpha.2"
+"react-native-reanimated@^2.3.0-beta.2", "react-native-reanimated@>= 1.0.0":
+  "integrity" "sha512-J0cBgOh0O05fNtGgHgrWfKtsYtzcAIhdNju6GVbRo6mVPp1jnuNmNQ2Dd7yXAF54+waj4w4h4pfP9D5J6EixkQ=="
+  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.3.0-beta.2.tgz"
+  "version" "2.3.0-beta.2"
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.10.4"
     "invariant" "^2.2.4"
     "lodash.isequal" "^4.5.0"
     "mockdate" "^3.0.2"
+    "react-native-screens" "^3.4.0"
     "string-hash-64" "^1.0.3"
 
 "react-native-safe-area-context@^3.1.9", "react-native-safe-area-context@^3.3.2", "react-native-safe-area-context@>= 3.0.0":
@@ -6269,7 +6270,7 @@
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
   "version" "3.3.2"
 
-"react-native-screens@^3.7.1", "react-native-screens@>= 3.0.0":
+"react-native-screens@^3.4.0", "react-native-screens@^3.7.1", "react-native-screens@>= 3.0.0":
   "integrity" "sha512-QZdE8ZaQ6e9wuwSkBWX49G4hlosr351v368RaMUn2y/RFAYedFtDtaCI8ychUCFThrg0pT9uKJF03nNtkXqWcg=="
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.7.1.tgz"
   "version" "3.7.1"

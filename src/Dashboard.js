@@ -61,15 +61,13 @@ export default function Dashboard() {
     var a = new Date().getDate();
     var b = new Date().getMonth()+1;
     var c = new Date().getFullYear();
-    alert(c+'-'+b+'-'+a)
     setCurrentDate(c+'-'+b+'-'+a)
   }
-
   const response = async () => {
     try {
       const response = await GETAPI("/api/home");
-      setEvent(response.data.events)
       setLoading(false);
+      setEvent(response.data.events)
       setLbv(response.data.lbv);
       setRbv(response.data.rbv);
       setLcf(response.data.lcf);

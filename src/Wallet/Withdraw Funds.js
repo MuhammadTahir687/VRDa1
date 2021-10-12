@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, TextInput, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity, TextInput, ScrollView, ActivityIndicator } from "react-native";
 import styles from '../StyleSheet/Style'
 import LinearGradient from "react-native-linear-gradient";
 import { Picker } from "@react-native-picker/picker";
@@ -37,12 +37,14 @@ export default function WithdrawFunds(){
   const [details,setDetails]=useState('');
   const [modalmsg,setmodalmsg]=useState('');
   const [btn,setBtn]=useState(0);
+  const [loading, setLoading] = useState(true);
   const Button=[{id:1,title:"Wallet"},{id:2,title:"Proceed Order"}]
 
   useEffect(async () => {await response()}, []);
   const response = async () => {
     try {
       const response= await GETAPI("/api/withdraw-funds")
+      setLoading(false);
       setAvailable(response.data.available)
       setEarning(response.data.earning.toFixed(2))
       setRecieved(response.data.receieved)
@@ -149,6 +151,7 @@ export default function WithdrawFunds(){
         </View>
       }
       </ScrollView>
+      <ActivityIndicator animating={loading} size="large" color="black" style={styles.activityind} />
     </SafeAreaView>
   )
 }

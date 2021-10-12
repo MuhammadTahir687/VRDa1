@@ -27,6 +27,7 @@ import Item from "./Components/Item";
 import Submit from "./Components/Submit";
 import Select from "./Components/Upload";
 import RBModal from "./Components/RBModel";
+import Toast from "react-native-simple-toast";
 
 export default function Shop() {
 
@@ -40,8 +41,10 @@ export default function Shop() {
   const [filePath, setFilePath] = useState([]);
   const [paymentformdata, setPaymentformdata] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState("");
   const [modalmsg,setModalmsg]=useState('')
+  const [detailvalidation,setDetailvalidation]=useState('');
+  const [uploadfilevalidation,setUploadfilevalidation]=useState('');
 
 
   const Button=[{id:1,title:"Package Details"},{id:2,title:"Proceed Order"}]
@@ -62,8 +65,8 @@ export default function Shop() {
     else if(itemValue=='wallet'){setPaymentformdata(response.data.data.wallet_form)}
   };
   const submit = async () => {
-    if(details==""){alert("Add Payment Details")}
-    else if(filePath==""){alert("Select a File")}
+    if(details==""){setDetailvalidation("Add Payment Details")}
+    else if(filePath==""){setUploadfilevalidation("Select a File")}
     else {
       const data = new FormData();
       data.append('package_id', getdata.id,);
@@ -73,6 +76,7 @@ export default function Shop() {
       const response = await POSTAPI('/api/shop-proceed-payments', data)
       setModalmsg(response.data.success)
       setModalVisible(true)
+      // Toast.show(response.data.success)
     }
   }
   const takephotofromgallery = () => {
@@ -87,59 +91,6 @@ export default function Shop() {
       console.log("error");
     });
   };
-
-  // const Proceed_details = () => {
-  //   if (selectedValue == " ") {
-  //     return (
-  //       <View></View>
-  //     );
-  //   } else if (selectedValue == "bank") {
-  //       return (
-  //         <View>
-  //           <RBText text1={"Account Name"} text2={paymentformdata.account_name} />
-  //           <RBText text1={"Bank Name"} text2={paymentformdata.bank_name} backgroundColor={"#bfbfbf"}/>
-  //           <RBText text1={"Account Number"} text2={paymentformdata.account_number} />
-  //           <RBText text1={"IBAN"} text2={paymentformdata.iban} backgroundColor={"#bfbfbf"}/>
-  //           <RBText text1={"Swift Code"} text2={paymentformdata.swift_code}/>
-  //           <RBText text1={"CIF Number"} text2={paymentformdata.cif_number} backgroundColor={"#bfbfbf"}/>
-  //           <RBText text1={"Branch Name"} text2={paymentformdata.branch_name}/>
-  //           <RBText text1={"Branch Code"} text2={paymentformdata.branch_code} backgroundColor={"#bfbfbf"}/>
-  //           <Select text1={"Upload File"} iconname={"images"} onPress={()=>{takephotofromgallery()}}/>
-  //           <TextInput
-  //             onChangeText={(text)=>{setDetails(text)}}
-  //             value={details}
-  //             placeholder="useless placeholder"
-  //             keyboardType="numeric"
-  //           />
-  //           <Submit text={"Submit"} onPress={()=>{submit()}}/>
-  //           <RBModal text1={modalmsg} iconname={"close"} text2={isModalVisible} onPress={()=>{setModalVisible(false)}}/>
-  //         </View>
-  //       );
-  //
-  //   } else if (selectedValue == "vreit") {
-  //     return (
-  //       <View>
-  //         <Text style={styles.rbwalletmsg}>VREIT</Text>
-  //       </View>
-  //     );
-  //   } else if (selectedValue == "usdt") {
-  //     return (
-  //       <View>
-  //         <Image source={{uri: paymentformdata.image}} style={styles.rbusdtimage}/>
-  //         <Text style={styles.rbwalletmsg}>{paymentformdata.code}</Text>
-  //       </View>
-  //     );
-  //   } else if (selectedValue == "wallet") {
-  //     return (
-  //       <View>
-  //         <Text style={styles.rbwalletmsg} >{paymentformdata.message}</Text>
-  //       </View>
-  //     );
-  //   }
-  //   return (
-  //     <View></View>
-  //   );
-  // };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FlatList data={data}
@@ -224,13 +175,15 @@ export default function Shop() {
               <RBText text1={"CIF Number"} text2={paymentformdata.cif_number} backgroundColor={"#bfbfbf"}/>
               <RBText text1={"Branch Name"} text2={paymentformdata.branch_name}/>
               <RBText text1={"Branch Code"} text2={paymentformdata.branch_code} backgroundColor={"#bfbfbf"}/>
-              <Select text1={"Upload File"} iconname={"images"} onPress={()=>{takephotofromgallery()}}/>
+              <Select text1={"Upload File"} iconname={"images"} onPress={()=>{takephotofromgallery(),setUploadfilevalidation('')}}/>
+                {uploadfilevalidation!=''&&<Text style={styles.shoperror}>{uploadfilevalidation}</Text>}
               <TextInput
                 style={styles.rbsinput}
                 value={details}
                 placeholder="Add Payment Details"
-                onChangeText={(text)=>{setDetails(text)}}
+                onChangeText={(text)=>{setDetails(text),setDetailvalidation('')}}
               />
+                {detailvalidation!=''&&<Text style={styles.shoperror}>{detailvalidation}</Text>}
               <Submit text={"Submit"} onPress={()=>{submit()}}/>
               <RBModal text1={modalmsg} iconname={"close"} text2={isModalVisible} onPress={()=>{setModalVisible(false)}}/>
             </ScrollView>

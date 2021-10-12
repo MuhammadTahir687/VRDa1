@@ -22,9 +22,9 @@ import MText from "../Components/ModalText";
 import MCText from "../Components/ModalColorText";
 
 export default function BinaryCommission() {
-  const [isModalVisible, setModalVisible] = useState();
+  const [isModalVisible, setModalVisible] = useState(false);
   const [getdata, setGetdata] = useState([]);
-  const [modaldata, setModaldata] = useState();
+  const [modaldata, setModaldata] = useState('');
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -43,11 +43,9 @@ export default function BinaryCommission() {
                 numColumns={2}
                 maxToRenderPerBatch={10}
                 onEndReachedThreshold={0}
-                keyExtractor={(item) => item.id}
                 renderItem={({ item, index }) => (
                   <TouchableOpacity onPress={() => {
                     setModaldata(item)
-                    setShow(true)
                     setModalVisible(true);
                   }} style={styles.allcomreportlist}>
                     <Text style={styles.comitem}>Ref.Code</Text>
@@ -57,7 +55,6 @@ export default function BinaryCommission() {
                   </TouchableOpacity>
                 )}
       />
-      {show==true?
         <Modal isVisible={isModalVisible}>
         <View style={{ flex: 0.58, backgroundColor: "white", alignSelf: "center", width: "98%", borderRadius: 20 }}>
           <View style={styles.modaluser}>
@@ -65,7 +62,7 @@ export default function BinaryCommission() {
               <Ionicons name="person" size={15} color="white" />
               <Text style={styles.modalhtext}>User</Text>
             </View>
-            <TouchableOpacity style={styles.modaliconclose} onPress={() => {setShow(false),setModalVisible(false);}}>
+            <TouchableOpacity style={styles.modaliconclose} onPress={() => {setModalVisible(false);}}>
               <Ionicons name="close" size={15} color="white" style={{ margin: 5, borderRadius: 50 }} />
             </TouchableOpacity>
           </View>
@@ -78,7 +75,7 @@ export default function BinaryCommission() {
           <MText text1={"Status"} text2={modaldata.status}/>
           <MCText text1={"Closing Date"} text2={modaldata.closing_date}/>
         </View>
-      </Modal> : <View></View> }
+      </Modal>
     </SafeAreaView>
 
   );

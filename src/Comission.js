@@ -16,16 +16,19 @@ import PText from "./Components/ProgressText";
 
 export default function Comission() {
 
-  const [isModalVisible, setModalVisible] = useState();
+  const [isModalVisible, setModalVisible] = useState(false);
   const [getdata, setGetdata] = useState([]);
   const [item,setItem]=useState('');
   const [show,setShow]=useState(false);
+  const [time,setTime]=useState(0)
 
   useEffect(async () => {await response();}, []);
 
   const response = async () => {
     try {
       const response= await GETAPI("api/closing-commissions-logs")
+      console.log("===================",response.data.next_closing_date);
+      setTime(response.data.next_closing_date)
       const res = response.data;
       const array=Object.values(res.logs)
       setGetdata(array)
@@ -40,10 +43,8 @@ export default function Comission() {
       <Clock />
       <View style={{ marginVertical: 10 }}>
         <FlatList data={getdata}
-                  onEndReachedThreshold={0.7}
-                  maxToRenderPerBatch={10}
-                  renderItem={({ item, index }) => (
-                    <TouchableOpacity onPress={() => {setItem(item),setShow(true),setModalVisible(true)}} style={styles.allcomreportlist}>
+                  renderItem={({ item }) => (
+                    <TouchableOpacity onPress={() => {setItem(item),setModalVisible(true)}} style={styles.allcomreportlist}>
                       <Text style={styles.comitem}>Transaction {item.transactions}</Text>
                       <Text style={styles.comitem}>{item.closing_date}</Text>
                       <Ionicons name="eye" size={18}/>
@@ -51,7 +52,7 @@ export default function Comission() {
                   )}
         />
       </View>
-      {show==true?<Modal isVisible={isModalVisible}>
+      <Modal isVisible={isModalVisible}>
         <View style={styles.modalcontainer}>
           <View style={styles.modaluser}>
             <View style={styles.modalh}>
@@ -72,7 +73,7 @@ export default function Comission() {
           </View>
           <MText text1={"Closing Date"} text2={item.closing_date} backgroundColor={"#bfbfbf"} />
         </View>
-      </Modal>:<View></View>}
+      </Modal>
     </SafeAreaView>
   );
 }

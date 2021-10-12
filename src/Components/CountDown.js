@@ -1,11 +1,11 @@
 import React from 'react';
 import CountDown from 'react-native-countdown-component';
 
-export default function Clock(){
+export default function Clock({value}){
   return(
     <CountDown
       size={30}
-      until={10000}
+      until={454037}
       onFinish={() => alert('Finished')}
       digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#000'}}
       digitTxtStyle={{color: '#000'}}

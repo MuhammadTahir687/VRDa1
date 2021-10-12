@@ -19,16 +19,16 @@ import UpdateBankDetail from "./Profile/Update Bank Detail";
 import UpdateBTC from "./Profile/Update BTC";
 import UpdateUSDT from "./Profile/Update USDT";
 
-export default function Route(){
+export default Route=()=>{
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false,animation:"slide_from_bottom"}}>
         <Stack.Screen name="Splash" component={Splash}/>
-        <Stack.Screen name="Drawer" component={AppDrawer}/>
         <Stack.Screen name="LoginMain" component={LoginMain}/>
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Signup" component={Signup}/>
+        <Stack.Screen name="Drawer" component={AppDrawer}/>
 
 
         <Stack.Screen name="PMain" component={ProfileMain} />

@@ -1,29 +1,35 @@
-import React from 'react';
-import {View} from "react-native";
+import React from "react";
+import { View } from "react-native";
 import { Calendar, CalendarList, Agenda, CalendarProvider, Timeline, ExpandableCalendar } from "react-native-calendars";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function Cal(){
-  const items={
-      '2012-05-22': [{name: 'item 1 - any js object'}],
-      '2012-05-23': [{name: 'item 2 - any js object', height: 80}],
-      '2012-05-24': [],
-      '2012-05-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
-  }
-  return(
+export default function Cal() {
+  return (
     <View>
-      <View style={{borderWidth:5,borderColor:"black",marginHorizontal:5,borderRadius:10,marginVertical:10}}>
-    <CalendarProvider date={Date()}>
-      <ExpandableCalendar />
-    </CalendarProvider>
-      </View>
-   {/* <Timeline*/}
-   {/*   format24h={true}*/}
-   {/*   renderItem={(item) => {*/}
-   {/*     return (<View style={{height: calculateHeightAccordingToTimespan(item)}} >*/}
-   {/*       <Text>{item.name}</Text>*/}
-   {/*     </View>);}}*/}
-   {/*/>*/}
+        <CalendarProvider date={Date()}
+        style={{backgroundColor:"#000",marginVertical:10,marginHorizontal:10}}
+        >
+          <ExpandableCalendar
+            theme={{
+              todayButtonTextColor: "white",
+              todayBackgroundColor:"black",
+              backgroundColor: 'black',
+              calendarBackground: '#ffffff',
+              textSectionTitleColor: '#b6c1cd',
+              textSectionTitleDisabledColor: '#d9e1e8',
+              selectedDayBackgroundColor: 'black',
+              selectedDayTextColor: 'white',
+              todayTextColor: '#ffffff',
+              dayTextColor: '#2d4150',
+              textDisabledColor: '#d9e1e8',
+              dotColor: '#000',
+              selectedDotColor: '#ffffff',
+              arrowColor: '#000',
+              disabledArrowColor: '#d9e1e8',
+              monthTextColor: '#000',
+            }}
+          />
+        </CalendarProvider>
     </View>
-  )
+  );
 }

@@ -78,7 +78,7 @@ export default StyleSheet.create({
   pdpickervaluesbcolorcontainer:{flex:1,flexDirection:"row",marginHorizontal:20,justifyContent:"space-between",backgroundColor:"#bfbfbf",borderRadius:5,alignItems:"center",padding:2},
   pdpickervaluesbtext:{flex:1,textAlign:"left",marginRight:10,color:"#000",fontWeight:"bold",marginLeft:10},
   pdpickervaluesbvalues:{flex:1,textAlign:"left",paddingLeft:12,paddingVertical:5,marginRight:10},
-  bankbutton:{marginHorizontal:15,marginVertical:5,padding:4},
+  bankbutton:{marginHorizontal:15,marginTop:5,padding:4},
   bankbutton1:{marginHorizontal:15,marginBottom:10,padding:4},
   bankbuttontext:{color:"white",fontWeight:"bold",padding:10},
   bankinput:{borderWidth:1,borderColor:"black",marginHorizontal:10,marginVertical:0,borderRadius:10,position:"absolute"},
@@ -155,13 +155,13 @@ export default StyleSheet.create({
   activityind:{flex:1,justifyContent:"center",alignItems:"center",alignSelf:"center",position:"absolute", left: 0, right: 0, top: 0, bottom: 0},
 
   shoplineargradientbank:{flexDirection: "row", justifyContent: "space-between", borderRadius: 5},
-  shopmodal:{backgroundColor: "white", height: 280, alignSelf: "center", width: 300, borderRadius: 20},
+  shopmodal:{backgroundColor: "white", height: 150, alignSelf: "center", width: 300, borderRadius: 20},
   modalcrossicon:{ justifyContent: "flex-end", flexDirection: "row", marginVertical: 10, marginRight: 20},
   crossicon:{backgroundColor: "gray", borderRadius: 50},
   modalcontentcontainer:{flex: 1, justifyContent: "center", alignItems: "center"},
   modaltexth:{fontWeight: "bold", fontSize: 18 },
 
-  rbsinput:{borderWidth:1,borderColor:"#000",marginHorizontal:20,borderRadius:5,marginBottom:5,height:40},
+  rbsinput:{borderWidth:1,borderColor:"#000",marginHorizontal:20,borderRadius:5,marginVertical:5,height:40,},
   activityfeedflatlist:{flex: 1, backgroundColor: "white", marginHorizontal: 10, marginVertical: 5, borderRadius: 10, elevation: 6, alignItems: "flex-start", justifyContent: "center", padding: 10,borderWidth:4,borderColor:"black"},
   pickerbottom:{marginHorizontal: "12%", borderBottomWidth: 2, borderBottomColor: "black", marginBottom: 5,},
   pickerabove:{color: "#999797", marginTop: 5},
@@ -184,5 +184,7 @@ export default StyleSheet.create({
 
   notes:{backgroundColor:"#bfbfbf",marginHorizontal:20,paddingHorizontal:10,borderRadius:10,paddingVertical:10},
   srcontainer:{flex:1},
-  profileerror:{color:"red",marginLeft:10,height:16,padding:0,fontSize:12}
+  profileerror:{color:"red",marginLeft:10,height:16,padding:0,fontSize:12},
+
+  shoperror:{color:"red",marginLeft:20}
 })
